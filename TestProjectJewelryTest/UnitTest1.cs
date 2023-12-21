@@ -62,7 +62,7 @@ namespace TestProjectJewelryTest
         {
             // Arrange
             var preciousStone = new PreciousStone(PreciousGemstoneName.Diamond, 1.0, 1000, "Clear", 10);
-            var expectedDetails = "Clarity: 10";
+            var expectedDetails = "Name: Diamond, Clarity: 10";
 
             // Act
             var details = preciousStone.GetDetails();
@@ -352,7 +352,7 @@ namespace TestProjectJewelryTest
         {
             // Arrange
             SemiPreciousStone stone = new SemiPreciousStone(SemiPreciousGemstoneName.Amethyst, 2.0, 150m, "Purple", 7);
-            var expectedDetails = "Hardness: 7 on Mohs scale";
+            var expectedDetails = "Name: Amethyst, Hardness: 7 on Mohs scale";
 
             // Act
             string details = stone.GetDetails();

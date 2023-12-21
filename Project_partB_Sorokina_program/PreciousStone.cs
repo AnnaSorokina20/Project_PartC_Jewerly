@@ -43,7 +43,7 @@ namespace Project_partB_Sorokina_program
         // Додавання деталей про чистоту каменю
         public override string GetDetails()
         {
-            return $"Clarity: {Clarity}";
+            return $"Name: {Name}, Clarity: {Clarity}";
         }
 
         // Перевизначення методу ToString для надання додаткової інформації

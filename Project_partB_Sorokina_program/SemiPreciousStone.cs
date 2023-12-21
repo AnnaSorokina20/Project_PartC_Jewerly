@@ -40,7 +40,7 @@ namespace Project_partB_Sorokina_program
         // Додавання деталей про твердість каменю
         public override string GetDetails()
         {
-            return $"Hardness: {Hardness} on Mohs scale";
+            return $"Name: {Name}, Hardness: {Hardness} on Mohs scale";
         }
 
         // Перевизначення методу ToString для надання додаткової інформації

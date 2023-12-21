@@ -8,6 +8,11 @@ class Program
         Necklace necklace = new Necklace();
         bool running = true;
 
+        // Підписка на події
+        necklace.StoneAdded += (sender, stone) => Console.WriteLine($"Added: {stone.GetDetails()}");
+        necklace.StoneRemoved += (sender, stone) => Console.WriteLine($"Removed: {stone.GetDetails()}");
+
+
         while (running)
         {
             Console.WriteLine("\n*** Gemstone Necklace Management ***");
@@ -16,7 +21,10 @@ class Program
             Console.WriteLine("3. Display Necklace Details");
             Console.WriteLine("4. Sort Stones by Value");
             Console.WriteLine("5. Find Stones by Color");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("6. Display Total Value of Stones");
+            Console.WriteLine("7. Execute Action for Each Stone");
+            Console.WriteLine("8. Filter Stones by Weigh");
+            Console.WriteLine("9. Exit");
             Console.Write("Enter your choice: ");
 
             int choice = Convert.ToInt32(Console.ReadLine());
@@ -165,6 +173,35 @@ class Program
                     }
                     break;
                 case 6:
+                    // Вивід загальної вартості каменів у намисті
+                    decimal totalValue = necklace.AggregateValues(stone => stone.GetValue());
+                    Console.WriteLine($"Total value of all stones: {totalValue}");
+                    break;
+                case 7:
+                    Console.Write("Enter the name of the stone type to display details for all matching stones: ");
+                    string stoneTypeName = Console.ReadLine();
+                    var stonesToDisplay = necklace.GetStones().Where(stone => stone.GetName().Equals(stoneTypeName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                    if (stonesToDisplay.Any())
+                    {
+                        Action<IGemstone> displayAction = stone => Console.WriteLine(stone.GetDetails());
+                        stonesToDisplay.ForEach(displayAction);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No stones of this type were found.");
+                    }
+                    break;
+                case 8:
+                    Console.Write("Enter minimum weight for stones to find: ");
+                    double minWeight = Convert.ToDouble(Console.ReadLine());
+                    var heavyStones = necklace.FilterStones(stone => stone.GetWeight() >= minWeight);
+                    foreach (var stone in heavyStones)
+                    {
+                        Console.WriteLine(stone.GetDetails());
+                    }
+                    break;
+                case 9:
                     running = false;
                     break;
                 default:
