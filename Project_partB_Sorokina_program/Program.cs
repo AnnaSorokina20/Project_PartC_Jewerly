@@ -106,8 +106,20 @@ class Program
                         }
                         PreciousGemstoneName gemstoneName = (PreciousGemstoneName)Enum.Parse(typeof(PreciousGemstoneName), Console.ReadLine());
 
-                        Console.Write("Enter gemstone clarity (1-10): ");
-                        int clarity = Convert.ToInt32(Console.ReadLine());
+
+                        //Console.Write("Enter gemstone clarity (1-10): ");
+                        //int clarity = Convert.ToInt32(Console.ReadLine());
+
+
+                        //    PreciousStone preciousStone = new PreciousStone(gemstoneName, weight, price, color, clarity);
+                        //    necklace.AddStone(preciousStone);
+
+                        int clarity;
+                        do
+                        {
+                            Console.Write("Enter gemstone clarity (1-10): ");
+                            clarity = Convert.ToInt32(Console.ReadLine());
+                        } while (clarity < 1 || clarity > 10);
 
                         PreciousStone preciousStone = new PreciousStone(gemstoneName, weight, price, color, clarity);
                         necklace.AddStone(preciousStone);
@@ -121,8 +133,18 @@ class Program
                         }
                         SemiPreciousGemstoneName gemstoneName = (SemiPreciousGemstoneName)Enum.Parse(typeof(SemiPreciousGemstoneName), Console.ReadLine());
 
-                        Console.Write("Enter gemstone hardness (1-10): ");
-                        int hardness = Convert.ToInt32(Console.ReadLine());
+                        //Console.Write("Enter gemstone hardness (1-10): ");
+                        //int hardness = Convert.ToInt32(Console.ReadLine());
+
+                        //SemiPreciousStone semiPreciousStone = new SemiPreciousStone(gemstoneName, weight, price, color, hardness);
+                        //necklace.AddStone(semiPreciousStone);
+
+                        int hardness;
+                        do
+                        {
+                            Console.Write("Enter gemstone hardness (1-10): ");
+                            hardness = Convert.ToInt32(Console.ReadLine());
+                        } while (hardness < 1 || hardness > 10);
 
                         SemiPreciousStone semiPreciousStone = new SemiPreciousStone(gemstoneName, weight, price, color, hardness);
                         necklace.AddStone(semiPreciousStone);
